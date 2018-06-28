@@ -1,0 +1,316 @@
+﻿
+@section scripts {
+
+    <script src="~/Scripts/Home/Index.js"></script>
+}
+
+
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h1>Departments</h1>
+
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <button class="btn ml-1 mr-1" data-toggle="modal" data-target="#addDepartmentModal">Add</button>
+
+
+                    <div class="modal fade bd-example-modal-lg" id="addDepartmentModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form class="modal-content" method="post" action="api/department/postdepartment" id="addDepartmentForm">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Department Add</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="material-icons my-auto">person</i>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" class="form-control" id="title" name="Title" placeholder="title">
+                                        </div>
+
+                                    </div>
+
+                                    <div id="addDepartmentFormMessage" class="text-danger">
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade bd-example-modal-lg" id="editDepartmentModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form class="modal-content" method="put" action="api/department/put" id="editDepartmentForm">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Department Edit</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="material-icons my-auto">#</i>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" class="form-control" id="id" name="Id" placeholder="Id" readonly>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="material-icons my-auto">person</i>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" class="form-control" id="title" name="Title" placeholder="title">
+                                        </div>
+                                    </div>
+
+                                    <div id="editDepartmentFormMessage" class="text-danger">
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+                    <button id="editDepartmentButton" class="btn ml-1 mr-1">Edit</button>
+                    <button id="deleteDepartmentButton" type="button" class="btn ml-1 mr-1">Delete</button>
+
+                </div>
+                <div class="row  mt-3">
+                    <div class="container">
+                        <table id="departmentsTable" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h1>Users</h1>
+
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <button class="btn ml-1 mr-1" data-toggle="modal" data-target="#addUserModal">Add</button>
+
+                    <div class="modal fade bd-example-modal-lg" id="addUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form class="modal-content" method="post" action="/api/user/postuser" id="addUserForm">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">User Add</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="material-icons my-auto">person</i>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" class="form-control" id="username" name="UserName" placeholder="Username">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <select name="DepartmentId" class="custom-select mr-sm-2 departmentSelect">
+                                            <option selected>Department</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="modal fade bd-example-modal-lg" id="editUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form class="modal-content" method="put" action="api/department/put" id="editUserModal">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">User Edit</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="material-icons my-auto">#</i>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" class="form-control" id="id" name="Id" placeholder="Id" readonly>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="material-icons my-auto">person</i>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="title">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <select name="DepartmentId" class="custom-select mr-sm-2 departmentSelect">
+                                            
+                                        </select>
+                                    </div>
+
+                                    <div id="editUserFormMessage" class="text-danger">
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+                    <button id="editUserButton" class="btn ml-1 mr-1">Edit</button>
+                    <button id="deleteUserButton" class="btn ml-1 mr-1">Delete</button>
+
+                </div>
+                <div class="row  mt-3">
+                    <div class="container">
+                        <table id="usersTable" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Username</th>
+                                    <th>DepartmentId</th>
+                                    <th>Department</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@*<div class="row mt-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <h1>User</h1>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons my-auto">person</i>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control" id="username" placeholder="Username">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <select class="custom-select mr-sm-2 departmentSelect"></select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>*@
