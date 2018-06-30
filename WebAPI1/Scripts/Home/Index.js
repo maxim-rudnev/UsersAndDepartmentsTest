@@ -11,7 +11,7 @@ $(function () {
         ],
 
         "ajax": {
-            "url": "../api/department/getall",
+            "url": "/api/department/getall",
 
             "dataSrc": function (json) {
                 departmentsTable.clear().draw();
@@ -40,7 +40,7 @@ $(function () {
         ],
 
         "ajax": {
-            "url": "../api/user/getall",
+            "url": "/api/user/getall",
             
             "dataSrc": function (json) {
                 usersTable.clear().draw();
@@ -109,6 +109,7 @@ $(function () {
 
                 renewDepartmentsList();
                 renewDepartmentsSelect();
+                renewUsersList();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 var message = '<div>' + xhr.responseText + '</div>';
@@ -138,6 +139,7 @@ $(function () {
 
                     renewDepartmentsList();
                     renewDepartmentsSelect();
+                    renewUsersList();
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert( xhr.responseText );
@@ -171,6 +173,29 @@ $(function () {
                 alert(thrownError);
             }
         });
+    });
+
+    // EDIT USER
+    $('#editUserButton').on("click", function (e) {
+        var idx = usersTable.cell('.selected', 0).index();
+        var data = usersTable.rows(idx.row).data();
+
+        $('#editUserForm input[name="Id"]').val(data[0].Id);
+        $('#editUserForm input[name="UserName"]').val(data[0].UserName);
+
+        var selectDepsOptions = $('#editUserForm select[name="DepartmentId"]')[0].options;
+
+        
+        selectDepsOptions.forEach( function (item) {
+            if (item.val() === data[0].Id)
+                item.attr('selected', true);
+            else 
+                item.attr('selected', false);
+        });
+
+
+        $('#editUserForm').modal('toggle');
+
     });
 
 
@@ -227,7 +252,7 @@ function renewDepartmentsList() {
 function renewDepartmentsSelect() {
     $.ajax({
         type: 'GET',
-        url: 'api/department/getall',
+        url: '/api/department/getall',
         dataType: 'json',
         success: function (data, status, req, xml, xmlHttpRequest, responseXML) {
             var departmentSelect = $('.departmentSelect');
@@ -236,7 +261,7 @@ function renewDepartmentsSelect() {
 
             $.each(data, function (index, val) {
                 var fullName = val.FirstName + ' ' + val.LastName;
-                departmentSelect.append('<option value="' + val.Id + '">' + val.Title + '</option>');
+                departmentSelect.append('<option value="' + val.Id + '">' + val.Id + ' - ' + val.Title + '</option>');
 
             });
         }

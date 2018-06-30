@@ -29,12 +29,14 @@ namespace WebAPI1.Controllers
 
             foreach (var userDT in _db.Users.ToList())
             {
+                var depDT = _db.Departments.FirstOrDefault(x => x.Id == userDT.DepartmentId);
+
                 res.Add(new UserDTO()
                 {
                     Id = userDT.Id,
                     UserName = userDT.UserName,
-                    DepartmentId = (userDT.Department !=null)? userDT.Department.Id:0,
-                    Department = (userDT.Department != null) ? userDT.Department.Title:""
+                    DepartmentId = (depDT != null)? depDT.Id: 0,
+                    Department = (depDT != null) ? depDT.Title:"Не найден"
                 });
             }
 
@@ -48,11 +50,11 @@ namespace WebAPI1.Controllers
         }
 
         // POST api/values
-        public void PostUser(UserCreateDto user)
+        public void Post(UserCreateDto user)
         {
             var userDT = new User();
             userDT.UserName = user.UserName;
-            userDT.Department = _db.Departments.FirstOrDefault(x=>x.Id == user.DepartmentId );
+            userDT.DepartmentId = user.DepartmentId;
 
             _db.Users.Add(userDT);
             _db.SaveChanges();

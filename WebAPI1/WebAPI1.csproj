@@ -468,6 +468,10 @@
     <Compile Include="Migrations\201806280424386_Initial4.Designer.cs">
       <DependentUpon>201806280424386_Initial4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806300421184_Initial5.cs" />
+    <Compile Include="Migrations\201806300421184_Initial5.Designer.cs">
+      <DependentUpon>201806300421184_Initial5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\DepartmentVMs\DepartmentCreateDto.cs" />
@@ -510,6 +514,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Home\Index.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -581,6 +586,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806280424386_Initial4.resx">
       <DependentUpon>201806280424386_Initial4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806300421184_Initial5.resx">
+      <DependentUpon>201806300421184_Initial5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

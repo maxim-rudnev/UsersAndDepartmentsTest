@@ -16,7 +16,7 @@ namespace WebAPI1.Models
 
         public string UserName { get; set; }
 
-        public virtual Department Department { get; set; }
+        public int DepartmentId { get; set; }
     }
 
 }

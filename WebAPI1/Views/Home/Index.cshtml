@@ -9,7 +9,7 @@
 <div class="row mt-5">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-primary">
                 <div class="card-title">
                     <h1>Departments</h1>
 
@@ -23,8 +23,9 @@
 
                     <div class="modal fade bd-example-modal-lg" id="addDepartmentModal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <form class="modal-content" method="post" action="api/department/postdepartment" id="addDepartmentForm">
-                                <div class="modal-header">
+                            <form class="modal-content" method="post" action="/api/department/post" id="addDepartmentForm">
+                                
+                                <div class="modal-header bg-primary">
                                     <h5 class="modal-title" id="exampleModalLabel">Department Add</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -37,7 +38,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="material-icons my-auto">person</i>
+                                                    <i class="material-icons my-auto">account_balance</i>
                                                 </div>
                                             </div>
 
@@ -64,7 +65,7 @@
                     <div class="modal fade bd-example-modal-lg" id="editDepartmentModal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <form class="modal-content" method="put" action="api/department/put" id="editDepartmentForm">
-                                <div class="modal-header">
+                                <div class="modal-header  bg-primary">
                                     <h5 class="modal-title" id="exampleModalLabel">Department Edit</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -90,7 +91,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="material-icons my-auto">person</i>
+                                                    <i class="material-icons my-auto">account_balance</i>
                                                 </div>
                                             </div>
 
@@ -144,7 +145,7 @@
 <div class="row mt-5">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-primary">
                 <div class="card-title">
                     <h1>Users</h1>
 
@@ -157,8 +158,8 @@
 
                     <div class="modal fade bd-example-modal-lg" id="addUserModal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <form class="modal-content" method="post" action="/api/user/postuser" id="addUserForm">
-                                <div class="modal-header">
+                            <form class="modal-content" method="post" action="@Url.Action("Post","api/User")" id="addUserForm">
+                                <div class="modal-header  bg-primary">
                                     <h5 class="modal-title" id="exampleModalLabel">User Add</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -196,8 +197,8 @@
 
                     <div class="modal fade bd-example-modal-lg" id="editUserModal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <form class="modal-content" method="put" action="api/department/put" id="editUserModal">
-                                <div class="modal-header">
+                            <form class="modal-content" method="put" action="/api/department/put" id="editUserForm">
+                                <div class="modal-header  bg-primary">
                                     <h5 class="modal-title" id="exampleModalLabel">User Edit</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -227,7 +228,7 @@
                                                 </div>
                                             </div>
 
-                                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="title">
+                                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="UserName">
                                         </div>
                                     </div>
 

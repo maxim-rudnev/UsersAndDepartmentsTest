@@ -24,7 +24,7 @@ namespace WebAPI1.Controllers
             return _db.Departments.ToList();
         }
 
-        public void PostDepartment(DepartmentCreateDto department)
+        public void Post(DepartmentCreateDto department)
         {
             var departmentDT = new Department();
             departmentDT.Title = department.Title;
